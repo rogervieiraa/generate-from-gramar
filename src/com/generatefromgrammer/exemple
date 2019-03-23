@@ -1,0 +1,4 @@
+S = aaBaA | A
+
+B = bbA | A
+A = aAAAa | 3
