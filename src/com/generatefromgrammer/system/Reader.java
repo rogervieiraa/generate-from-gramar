@@ -11,7 +11,7 @@ public class Reader {
 	
 	//salva os Nao Terminais
 	private static Map<String, List<String>> answer;
-	//Salva os não terminais que ainda não foram lidos
+	//Salva os nï¿½o terminais que ainda nï¿½o foram lidos
 	private static List<String> queueReader;
 	
 	public static Map<String, List<String>> readInput() {
@@ -23,7 +23,7 @@ public class Reader {
 		String first = inputReader.nextLine();
 		
 		addToMap(first);
-		
+		executeQueue();
 		return answer;
 	}
 	
@@ -36,7 +36,6 @@ public class Reader {
 				ans += expression.charAt(i);
 			}
 		}
-		
 		return ans;
 	}
 	
@@ -44,45 +43,45 @@ public class Reader {
 	private static void addToMap(String expression) {
 		//remove os espaco
 		expression = eliminateSpace(expression);
-		
 		String key = "";
 		List<String> value = new ArrayList<String>();
 		
 		//Primeiro Split
 		String[] divedeNoTerminal = expression.split("=");
 		if(divedeNoTerminal.length != 2) {
-			System.out.println("ESCREVE SERTO PORRA");
+			System.out.println("sem sinal de =");
 			return;
 		}
 		key = divedeNoTerminal[0];
 		expression = divedeNoTerminal[1];
 		
-		String[] divideOptions = expression.split("|");
-		
+		String[] divideOptions = expression.split(";");
 		for(int i=0;i<divideOptions.length;i++) {
 			addToQueue(divideOptions[i]);
 			value.add(divideOptions[i]);
 		}
 
 		answer.put(key, value);
+		
 	}
 	
 	//Adiciona na Queue
 	private static void addToQueue(String expression) {
-		
 		for(int i=0;i<expression.length();i++) {
 			if(expression.charAt(i) >= 'A' && expression.charAt(i) <= 'Z') {
-				if(!queueReader.contains(expression.charAt(i))) {
+				
+				if(!queueReader.contains("" + expression.charAt(i))) {
 					queueReader.add("" + expression.charAt(i));
 				}
 				
 			}
 		}
 		
+		
 	}
 	
 	//le o proximo elemento
-	private String readLine(String expected) {
+	private static String readLine(String expected) {
 		Scanner s = new Scanner(System.in);
 		System.out.println("Insera nao terminal " + expected +" seguindo padrao X = xxxx");
 		
@@ -90,7 +89,7 @@ public class Reader {
 	}
 	
 	//executa a queue
-	private void executeQueue() {
+	private static void executeQueue() {
 		for(int i=0;i<queueReader.size();i++) {
 			String ans = readLine(queueReader.get(i));
 			addToMap(ans);
