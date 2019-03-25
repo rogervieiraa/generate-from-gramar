@@ -21,22 +21,10 @@ public class Reader {
 		Scanner inputReader = new Scanner(System.in);
 		
 		String first = inputReader.nextLine();
-		
+
 		addToMap(first);
 		executeQueue();
 		return answer;
-	}
-	
-	//Remove os espacos
-	private static String eliminateSpace(String expression) {
-		String ans = "";
-		
-		for(int i=0;i<expression.length();i++) {
-			if(expression.charAt(i) != ' ') {
-				ans += expression.charAt(i);
-			}
-		}
-		return ans;
 	}
 	
 	//Adiciona no mape chama o addToQueue
@@ -80,20 +68,32 @@ public class Reader {
 		
 	}
 	
-	//le o proximo elemento
-	private static String readLine(String expected) {
-		Scanner s = new Scanner(System.in);
-		System.out.println("Insera nao terminal " + expected +" seguindo padrao X = xxxx");
-		
-		return eliminateSpace(s.nextLine());
-	}
-	
 	//executa a queue
 	private static void executeQueue() {
 		for(int i=0;i<queueReader.size();i++) {
 			String ans = readLine(queueReader.get(i));
 			addToMap(ans);
 		}
+	}
+	
+	//le o proximo elemento
+	private static String readLine(String expected) {
+		Scanner s = new Scanner(System.in);
+		System.out.println("Insera nao terminal " + expected +" seguindo padrao X = xxxx");
+		String line = s.nextLine();
+		return eliminateSpace(line);
+	}
+	
+	//Remove os espacos
+	private static String eliminateSpace(String expression) {
+		String ans = "";
+		
+		for(int i=0;i<expression.length();i++) {
+			if(expression.charAt(i) != ' ') {
+				ans += expression.charAt(i);
+			}
+		}
+		return ans;
 	}
 	
 }

@@ -3,13 +3,14 @@ package com.generatefromgrammer.system;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.Stack;
 
-public class Generator {
+public class GeneratorString {
 	private Map<String, List<String>> grammar;
 	private final char START_ELEMENT = 'S';
 	private boolean console;
 	
-	public Generator(Map<String, List<String>> grammar,boolean console) {
+	public GeneratorString(Map<String, List<String>> grammar,boolean console) {
 		this.grammar = grammar;
 		this.console = console;
 	}
@@ -69,6 +70,12 @@ public class Generator {
 		if(randomOption < 0) {
 			randomOption *= -1; // bug negativo
 		}
-		return possibilites.get(randomOption);
+		String option = possibilites.get(randomOption);
+		
+		if(option.equals("3")) {
+			return "";
+		}
+		return option;
 	}
+
 }
