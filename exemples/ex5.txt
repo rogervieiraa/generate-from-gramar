@@ -1,0 +1,9 @@
+S = aA
+A = bB
+B = cC
+C = dD
+D = eE
+E = fF
+F = gG
+G = rR
+R = roger ; S

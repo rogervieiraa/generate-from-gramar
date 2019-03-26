@@ -1,0 +1,3 @@
+S = vaiS ; rogerR; professorT
+R = god ; 3
+T = gilbertoR

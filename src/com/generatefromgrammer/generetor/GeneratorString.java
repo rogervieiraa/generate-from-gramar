@@ -1,4 +1,4 @@
-package com.generatefromgrammer.system;
+package com.generatefromgrammer.generetor;
 
 import java.util.List;
 import java.util.Map;
@@ -6,11 +6,11 @@ import java.util.Random;
 import java.util.Stack;
 
 public class GeneratorString {
-	private Map<String, List<String>> grammar;
+	private Map<Character, List<String>> grammar;
 	private final char START_ELEMENT = 'S';
 	private boolean console;
 	
-	public GeneratorString(Map<String, List<String>> grammar,boolean console) {
+	public GeneratorString(Map<Character, List<String>> grammar,boolean console) {
 		this.grammar = grammar;
 		this.console = console;
 	}
@@ -63,7 +63,7 @@ public class GeneratorString {
 	}
 
 	private String getOption(char index) {
-		List<String> possibilites = grammar.get(""+index);
+		List<String> possibilites = grammar.get(index);
 		Random r = new Random();
 		
 		int randomOption = r.nextInt()%possibilites.size();

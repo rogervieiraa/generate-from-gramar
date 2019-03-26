@@ -1,0 +1,4 @@
+S = rA ; lB ; cC
+A = rogerA ; 3
+B = legalB ; 3
+C = carambaC ; 3

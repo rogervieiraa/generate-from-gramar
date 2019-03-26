@@ -1,4 +1,4 @@
-package com.generatefromgrammer.system;
+package com.generatefromgrammer.reader;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -7,16 +7,16 @@ import java.util.Map;
 import java.util.Queue;
 import java.util.Scanner;
 
-public class Reader {
+public class ReaderFromConsole {
 	
 	//salva os Nao Terminais
-	private static Map<String, List<String>> answer;
+	private static Map<Character, List<String>> answer;
 	//Salva os n�o terminais que ainda n�o foram lidos
-	private static List<String> queueReader;
+	private static List<Character> queueReader;
 	
-	public static Map<String, List<String>> readInput() {
-		answer = new HashMap<String, List<String>>();
-		queueReader = new ArrayList<String>();
+	public static Map<Character, List<String>> readInput() {
+		answer = new HashMap<Character, List<String>>();
+		queueReader = new ArrayList<Character>();
 		
 		Scanner inputReader = new Scanner(System.in);
 		
@@ -31,7 +31,7 @@ public class Reader {
 	private static void addToMap(String expression) {
 		//remove os espaco
 		expression = eliminateSpace(expression);
-		String key = "";
+		Character key;
 		List<String> value = new ArrayList<String>();
 		
 		//Primeiro Split
@@ -40,7 +40,7 @@ public class Reader {
 			System.out.println("sem sinal de =");
 			return;
 		}
-		key = divedeNoTerminal[0];
+		key = divedeNoTerminal[0].charAt(0);
 		expression = divedeNoTerminal[1];
 		
 		String[] divideOptions = expression.split(";");
@@ -56,10 +56,12 @@ public class Reader {
 	//Adiciona na Queue
 	private static void addToQueue(String expression) {
 		for(int i=0;i<expression.length();i++) {
-			if(expression.charAt(i) >= 'A' && expression.charAt(i) <= 'Z') {
+			if((expression.charAt(i) >= 'A') && 
+					(expression.charAt(i) <= 'Z')&&
+					(expression.charAt(i) != 'S')) {
 				
-				if(!queueReader.contains("" + expression.charAt(i))) {
-					queueReader.add("" + expression.charAt(i));
+				if(!queueReader.contains(expression.charAt(i))) {
+					queueReader.add(expression.charAt(i));
 				}
 				
 			}
@@ -77,9 +79,9 @@ public class Reader {
 	}
 	
 	//le o proximo elemento
-	private static String readLine(String expected) {
+	private static String readLine(Character expected) {
 		Scanner s = new Scanner(System.in);
-		System.out.println("Insera nao terminal " + expected +" seguindo padrao X = xxxx");
+		System.out.println("Insera nao terminal " + expected +" seguindo padrao X = xx ; xx");
 		String line = s.nextLine();
 		return eliminateSpace(line);
 	}

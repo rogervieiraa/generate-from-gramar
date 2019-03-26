@@ -3,24 +3,24 @@ package com.generatefromgrammer.main;
 import java.util.List;
 import java.util.Map;
 
-import com.generatefromgrammer.system.GeneratorString;
-import com.generatefromgrammer.system.GeneratorStack;
-import com.generatefromgrammer.system.Reader;
+import com.generatefromgrammer.generetor.GeneratorStack;
+import com.generatefromgrammer.generetor.GeneratorString;
+import com.generatefromgrammer.reader.ReaderFromConsole;
+import com.generatefromgrammer.reader.ReaderFromFile;
 
 public class Main {
 
 	public static void main(String[] args) {
 		
-		Map<String, List<String>> grammar = Reader.readInput();
-		System.out.println("S" + grammar.get("S"));
-		
+		//Map<Character, List<String>> grammar = ReaderFromConsole.readInput();
+		Map<Character, List<String>> grammar = ReaderFromFile.readInput("exemples/ex4.txt");
 		GeneratorString gen = new GeneratorString(grammar, false);
-		for(int i=0;i<3;i++) {
+		for(int i=0;i<5;i++) {
 			System.out.println(i + " " + gen.generateOneElement());
 		}
-		GeneratorStack genner = new GeneratorStack(grammar, false);
-		for(int i=0;i<3;i++) {
-			System.out.println(i + " " + genner.generateOneElement());
+		GeneratorStack gener = new GeneratorStack(grammar, false);
+		for(int i=0;i<5;i++) {
+			System.out.println(i + " " + gener.generateOneElement());
 		}
 		
 	}
