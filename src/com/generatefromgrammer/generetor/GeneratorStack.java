@@ -23,13 +23,18 @@ public class GeneratorStack {
 		this.elements.push('S');
 		String sentense = "";
 		int interation = 1;
-		while(!elements.isEmpty()) {
+		while(!this.elements.isEmpty()) {
 			Character local_char = elements.pop();
 			if(isNoTerminal(local_char)) {
 				doIteration(local_char);
 			}
 			else {
 				sentense += local_char;
+			}
+			if(this.console) {
+				System.out.println("Interation: " + interation);
+				System.out.println("Sentense: " + sentense);
+				System.out.println("Next element" + this.elements.peek());
 			}
 		}
 		return sentense;
