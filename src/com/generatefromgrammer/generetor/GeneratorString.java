@@ -5,16 +5,27 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Stack;
 
+/**
+ * @author Roger Vieira
+ * @version 1.0
+ */
 public class GeneratorString {
 	private Map<Character, List<String>> grammar;
 	private final char START_ELEMENT = 'S';
 	private boolean console;
 	
+	/**
+	 * @param grammar
+	 * @param a boolean that tells if print in the console in the iterations
+	 */
 	public GeneratorString(Map<Character, List<String>> grammar,boolean console) {
 		this.grammar = grammar;
 		this.console = console;
 	}
 
+	/**
+	 * @return a sentence generator by the grammar.
+	 */
 	public String generateOneElement() {
 		String element = getOption(START_ELEMENT);
 		int interation = 1;
@@ -28,6 +39,10 @@ public class GeneratorString {
 		return element;
 	}
 
+	/**
+	 * @param string
+	 * @return if the first element of the string is not terminal
+	 */
 	private boolean haveNoTerminal(String element) {
 		
 		for(int i=0;i<element.length();i++) {
@@ -39,7 +54,11 @@ public class GeneratorString {
 		
 		return false;
 	}
-
+	
+	/**
+	 * @param full sentence
+	 * @return the sentence but if a not terminal substuited by the sentence.
+	 */
 	private String doIteration(String element) {
 		String ans = "";
 		boolean alreadyDidNoTerminal = false;
@@ -61,7 +80,11 @@ public class GeneratorString {
 		return ans;
 		
 	}
-
+	
+	/**
+	 * @param character of not terminal
+	 * @return a string generate random string using grammar
+	 */
 	private String getOption(char index) {
 		List<String> possibilites = grammar.get(index);
 		Random r = new Random();

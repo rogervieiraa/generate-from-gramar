@@ -13,7 +13,7 @@ public class Main {
 	public static void main(String[] args) {
 		
 		//Map<Character, List<String>> grammar = ReaderFromConsole.readInput();
-		Map<Character, List<String>> grammar = ReaderFromFile.readInput("exemples/ex4.txt");
+		Map<Character, List<String>> grammar = ReaderFromFile.readInput("example/ex3.txt");
 		GeneratorString gen = new GeneratorString(grammar, false);
 		for(int i=0;i<5;i++) {
 			System.out.println(i + " " + gen.generateOneElement());
