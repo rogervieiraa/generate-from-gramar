@@ -41,7 +41,7 @@ public class GeneratorStack {
 			if(this.console) {
 				System.out.println("Interation: " + interation);
 				System.out.println("Sentense: " + sentense);
-				System.out.println("Next element" + this.elements.peek());
+				interation++;
 			}
 		}
 		return sentense;
