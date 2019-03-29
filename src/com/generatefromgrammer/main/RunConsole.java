@@ -29,12 +29,29 @@ public class RunConsole {
 		}
 		else {
 			System.out.println("1 OU 2 SABE LER NAO?");
+			System.out.println("Brincadeira, executa dinovo ai plz");
 			return;
 		}
 		
 		System.out.println("Digite a quantidade de elementos:");
 		int quant = s.nextInt();
-		GeneratorStack gener = new GeneratorStack(grammar, false);
+		System.out.println("Digite:");
+		System.out.println("0 - Logs durante o desenvolvimento da sentenca DESATIVADO");
+		System.out.println("1 - Logs durante o desenvolvimento da sentenca ATIVADO");
+		int conOption = s.nextInt();
+		boolean consoleLogs = false;
+		if(conOption == 1) {
+			consoleLogs = true;
+		}
+		else if(conOption == 0) {
+			consoleLogs = false;
+		}
+		else {
+			System.out.println("0 OU 1 SABE LER NAO?");
+			System.out.println("Brincadeira, executa dinovo ai plz");
+		}
+		
+		GeneratorStack gener = new GeneratorStack(grammar, consoleLogs);
 		for(int i=1;i<quant + 1;i++) {
 			System.out.println(i + " " + gener.generateOneElement());
 		}

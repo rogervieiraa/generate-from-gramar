@@ -19,7 +19,7 @@ public class ReaderFromConsole {
 		queueReader = new ArrayList<Character>();
 		
 		Scanner inputReader = new Scanner(System.in);
-		
+		System.out.println("Digite o inicio comecando com S, exemplo: S = aa ; bb");
 		String first = inputReader.nextLine();
 
 		addToMap(first);
