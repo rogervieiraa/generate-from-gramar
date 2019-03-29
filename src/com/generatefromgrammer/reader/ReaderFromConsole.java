@@ -81,7 +81,7 @@ public class ReaderFromConsole {
 	//le o proximo elemento
 	private static String readLine(Character expected) {
 		Scanner s = new Scanner(System.in);
-		System.out.println("Insera nao terminal " + expected +" seguindo padrao X = xx ; xx");
+		System.out.println("Insera nao terminal " + expected +" seguindo padrao X = xX ; xx");
 		String line = s.nextLine();
 		return eliminateSpace(line);
 	}
