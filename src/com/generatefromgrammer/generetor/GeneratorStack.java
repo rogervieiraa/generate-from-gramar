@@ -33,7 +33,8 @@ public class GeneratorStack {
 		while(!this.elements.isEmpty()) {
 			Character local_char = elements.pop();
 			if(isNoTerminal(local_char)) {
-				doIteration(local_char);
+				addOption(local_char);
+				//doIteration(local_char);
 			}
 			else {
 				sentense += local_char;
@@ -48,6 +49,38 @@ public class GeneratorStack {
 	}
 	
 	/**
+	 * @param string
+	 * @return if the character is not terminal
+	 */
+	private boolean isNoTerminal(Character character) {
+			return (character >= 'A' && character <= 'Z');
+	}
+
+	/**
+	 * @param character of not terminal
+	 */
+	private void addOption(char index) {
+		List<String> possibilites = grammar.get(index);
+		Random r = new Random();
+		
+		int randomOption = r.nextInt()%possibilites.size();
+		if(randomOption < 0) {
+			randomOption *= -1; // bug negativo
+		}
+		String option = possibilites.get(randomOption);
+		
+		if(option.equals("3")) {
+			option = "";
+		}
+		
+		for(int i=option.length() - 1;i>=0;i--) {
+			this.elements.push(option.charAt(i));
+		}
+		
+	}
+	
+	/**
+	 * @deprecated
 	 * @param character of the Not Terminal
 	 */
 	private void doIteration(Character local_char) {
@@ -60,15 +93,8 @@ public class GeneratorStack {
 	}
 	
 	/**
-	 * @param string
-	 * @return if the character is not terminal
-	 */
-	private boolean isNoTerminal(Character character) {
-			return (character >= 'A' && character <= 'Z');
-	}
-
-	/**
 	 * @param character of not terminal
+	 * @deprecated
 	 * @return a string generate random string using grammar
 	 */
 	private Stack<Character> getOption(char index) {
@@ -92,6 +118,5 @@ public class GeneratorStack {
 		
 		return ans;
 	}
-
 	
 }
